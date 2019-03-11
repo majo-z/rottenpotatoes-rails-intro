@@ -11,6 +11,11 @@ class MoviesController < ApplicationController
   end
 
   def index
+
+    # get all ratings (G, PG, PG-13, R)
+    # @all_ratings = Movie.uniq.pluck(:rating).sort 
+    @all_ratings = Movie.distinct.pluck(:rating).sort
+    
     # @movies = Movie.all
     sort = params[:sort_by]
 
@@ -18,7 +23,6 @@ class MoviesController < ApplicationController
     @release_date_header = 'hilite' if sort == 'release_date'
 
     @movies = Movie.order(sort)
-
   end
 
   def new
