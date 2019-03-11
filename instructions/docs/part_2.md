@@ -64,4 +64,4 @@ $ git commit -am "part 2 complete"
 $ git push heroku master
 ```
 
-Next: [Part 3: Remember the sorting and filtering settings](part_3.md)
+Next: [Part 3: Remember the sorting and filtering settings](part_3.md) 
