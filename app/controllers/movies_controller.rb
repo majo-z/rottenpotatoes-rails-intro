@@ -18,11 +18,11 @@ class MoviesController < ApplicationController
     # @all_ratings = Movie.uniq.pluck(:rating).sort 
     # @all_ratings = Movie.distinct.pluck(:rating).sort # moved to movie.rb
     @all_ratings = Movie.ratings
-    
-    rating = @all_ratings
-    rating = params[:ratings].keys if params.keys.include? 'ratings'
+
+    @rating = @all_ratings
+    @rating = params[:ratings].keys if params.keys.include? 'ratings'
     # @movies = Movie.order(sort)
-    @movies = Movie.where(rating: rating).order(sort)
+    @movies = Movie.where(rating: @rating).order(sort)
 
     @title_header = 'hilite' if sort == 'title'
     @release_date_header = 'hilite' if sort == 'release_date'
