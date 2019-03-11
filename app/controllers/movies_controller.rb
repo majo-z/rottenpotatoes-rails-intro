@@ -11,18 +11,21 @@ class MoviesController < ApplicationController
   end
 
   def index
+    # @movies = Movie.all
+    sort = params[:sort_by]
+
     # get all ratings (G, PG, PG-13, R)
     # @all_ratings = Movie.uniq.pluck(:rating).sort 
     # @all_ratings = Movie.distinct.pluck(:rating).sort # moved to movie.rb
     @all_ratings = Movie.ratings
     
-    # @movies = Movie.all
-    sort = params[:sort_by]
+    rating = @all_ratings
+    rating = params[:ratings].keys if params.keys.include? 'ratings'
+    # @movies = Movie.order(sort)
+    @movies = Movie.where(rating: rating).order(sort)
 
     @title_header = 'hilite' if sort == 'title'
     @release_date_header = 'hilite' if sort == 'release_date'
-
-    @movies = Movie.order(sort)
   end
 
   def new
