@@ -31,4 +31,4 @@ For Berkeley students, please push your code to your remote repository:
 $ git push origin master
 ```
 
-Next: [Submission](../README.md#how-to-submit-when-youre-all-done)
+Next: [Submission](../README.md#how-to-submit-when-youre-all-done) 
